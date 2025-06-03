@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Осмонова Гулиза Осмоновна - Онлайн Портфолио</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f9ff;
+      color: #222;
+      line-height: 1.6;
+      font-size: 16px;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: relative;
+      padding: 40px 20px;
+      text-align: center;
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(42, 103, 200, 0.5);
+      animation: slideDownFade 1s ease forwards;
+      background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1470&q=80');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    /* затемнение фона */
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(42, 103, 200, 0.55);
+      z-index: 0;
+      border-radius: 0 0 40px 40px;
+    }
+    header h1, header p {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+    }
+    header h1 {
+      font-weight: 900;
+      font-size: 2.8rem;
+      letter-spacing: 2px;
+      opacity: 0;
+      animation: fadeInText 1.5s ease 0.5s forwards;
+    }
+ header p {
+  margin-top: 10px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  opacity: 0;
+  animation: fadeInText 1.5s ease 1s forwards;
+  color: #fff;
+}
+
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #fff;
+      border-bottom: 2px solid #4a90e2;
+      padding: 18px 10px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(74,144,226,0.15);
+      backdrop-filter: saturate(180%) blur(10px);
+      animation: slideUpFade 1s ease forwards;
+      animation-delay: 1.5s;
+      opacity: 0;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #4a90e2;
+      font-weight: 600;
+      padding: 12px 22px;
+      margin: 0 12px;
+      border-radius: 8px;
+      border-bottom: 3px solid transparent;
+      transition:
+        border-color 0.4s ease,
+        background-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.25s ease;
+      font-size: 1.1rem;
+      box-shadow: 0 0 0 rgba(74,144,226,0);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      user-select: none;
+    }
+
+    /* Аватарки в меню */
+    nav a img {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      object-fit: cover;
+      filter: drop-shadow(0 0 1px rgba(0,0,0,0.2));
+      transition: transform 0.3s ease;
+    }
+    nav a:hover img,
+    nav a.active img {
+      transform: scale(1.2);
+    }
+
+    nav a:hover,
+    nav a.active {
+      border-bottom-color: #2b6cb0;
+      background-color: #e6f0ff;
+      color: #1a3f8f;
+      box-shadow: 0 6px 12px rgba(42,103,200,0.25);
+      transform: translateY(-3px);
+    }
+
+    main {
+      max-width: 820px;
+      margin: 50px auto 100px;
+      padding: 0 24px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 15px 35px rgba(42,103,200,0.15);
+      padding-bottom: 40px;
+      animation: fadeInSection 1s ease forwards;
+      opacity: 0;
+    }
+
+    section {
+      display: none;
+      animation: fadeInSection 0.8s ease forwards;
+      opacity: 0;
+    }
+    section.active {
+      display: block;
+      opacity: 1;
+    }
+
+    h2 {
+      font-weight: 900;
+      font-size: 2rem;
+      color: #2c5282;
+      border-left: 6px solid #4a90e2;
+      padding-left: 14px;
+      margin-bottom: 30px;
+      margin-top: 0;
+      letter-spacing: 0.03em;
+      text-shadow: 1px 1px 2px rgba(74,144,226,0.3);
+    }
+
+    p {
+      margin-bottom: 1.6rem;
+      color: #4a5568;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+    ul {
+      padding-left: 22px;
+      margin-bottom: 1.6rem;
+      color: #4a5568;
+      font-size: 1.05rem;
+    }
+    ul li {
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 15px;
+      color: #718096;
+      font-size: 0.95rem;
+      margin-top: 80px;
+      user-select: none;
+      letter-spacing: 0.03em;
+    }
+
+    @keyframes fadeInText {
+      from {opacity: 0; transform: translateY(15px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes slideDownFade {
+      from {opacity: 0; transform: translateY(-20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes slideUpFade {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    @keyframes fadeInSection {
+      from {opacity: 0; transform: translateY(15px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+
+  <script>
+    function showSection(id, el) {
+      document.querySelectorAll('section').forEach(s => {
+        s.classList.remove('active');
+        s.style.opacity = 0;
+      });
+      const target = document.getElementById(id);
+      target.classList.add('active');
+      setTimeout(() => target.style.opacity = 1, 50);
+
+      document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
+      el.classList.add('active');
+    }
+
+    window.onload = () => {
+      const firstNavLink = document.querySelector('nav a');
+      if (firstNavLink) {
+        showSection(firstNavLink.getAttribute('data-target'), firstNavLink);
+      }
+    };
+  </script>
+</head>
+
+<body>
+  <header>
+    <h1>Осмонова Гулиза Осмоновна</h1>
+    <p>Тарбиячы — "Көк-Бел нуру" МЧББМ</p>
+  </header>
+
+  <nav>
+    <a href="#" data-target="home" onclick="showSection('home', this); return false;">
+      <img src="https://cdn-icons-png.flaticon.com/512/1946/1946436.png" alt="Башкы бет" /> Башкы бет
+    </a>
+    <a href="#" data-target="personal" onclick="showSection('personal', this); return false;">
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Өздүк маалыматтар" /> Өздүк маалыматтар
+    </a>
+    <a href="#" data-target="work" onclick="showSection('work', this); return false;">
+      <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="Менин сүйгөн жумушум" /> Менин сүйгөн жумушум
+    </a>
+    <a href="#" data-target="contact" onclick="showSection('contact', this); return false;">
+      <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Байланыш" /> Байланыш
+    </a>
+  </nav>
+
+  <main>
+<section id="home">
+<img src="photo_2025-06-03_14-17-41.jpg" alt="" style="display: block; margin: 0 auto 30px;  width: 270px; height: 300px; border-radius: 5%;">
+  <h2>Осмонова Гулиза Осмоновна</h2>
+  1991- жыл 16- июнь<br />
+  Улуту: кыргыз<br />
+  Жарандыгы: Кыргызстан<br />
+  Үй-бүлөлүк абалы: никеси бар<br />
+  Билими: жогорку (ОГПИ)<br />
+  Адистиги: кыргыз тили жана адабияты мугалими<br />
+  Иштеген жери: "Көк-Бел нуру" МЧББМде тарбиячы<br />
+  Эмгек стажы: 4 жыл<br />
+  Сыйлыктары: айыл өкмөттүн жана жогорку кеңештин<br />
+  Компьютердик сабаттуулук: Microsoft Office Word, Internet<br />
+  Өздөштүргөн тилдери: кыргыз, орус, өзбек, казак тилдери<br />
+  Хоббиси: китеп окуу, ырдоо<br />
+  Жеке сапаттары: Адилеттүүлүк, кесиптештер менен жакшы мамиле түзө билүү, ийкемдүү, сабырдуу, жөнөкөй.
+</section>
+
+
+    <section id="personal">
+      <h2>Өздүк маалыматтар</h2>
+      <p>🧾 <strong>Мен тууралуу кыскача маалымат</strong></p>
+      <p>Мен — Осмонова Гулиза Осмоновна, 1991-жылы 16-июнда Ош облусунун Ноокат районуна караштуу Үч-Бай айылында төрөлгөм. Бала чагым ата-энемдин мээриминде өтүп, 1997-жылы Үч-Бай орто мектебине 1-класска барып, 2008-жылы ийгиликтүү аяктадым.</p>
+      <p>2010-жылы Ош гуманитардык-педагогикалык институтунун филология факультетине тапшырып, тил жана адабият багытында жогорку билим алдым.</p>
+      <p>👩‍👧‍👦 <strong>Үй-бүлөм жана тарбия</strong></p>
+      <p>2015-жылы турмуш жолуна аттанып, учурда 3 кыздын жана 1 уулдун мээримдүү апасымын. Ошондой эле акылдуу келин, түйшүктү тең бөлүшкөн сүйүктүү жармын.</p>
+      <p>Атам — айдоочу, апам — мугалим. Үй-бүлөдө 5 бир тууганбыз. Мен төртүнчүсүмүн. Бир туугандарымдын баары жогорку билимдүү жана билим берүү тармагында эмгектенишет.</p>
+ <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-top: 30px;">
+   <img src="photo_2025-06-03_12-30-31.jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_12-39-34 (2).jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_12-39-27 (2).jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <!-- Добавляйте ещё фото при необходимости -->
+</div>
+
+    </section>
+
+    <section id="work">
+      <h2>Менин сүйгөн жумушум</h2>
+      <p>👩‍🏫 <strong>Кесиптик ишмердүүлүгүм</strong></p>
+      <p>2021-жылдан бери Көк-Бел айылындагы "Көк-Бел нуру" балдар бакчасында тарбиячы болуп иштеп келем. Балдардын жаш өзгөчөлүктөрүнө жараша окутуу жана тарбиялоо усулдарын колдонуп, ар бир балага мээрим, билим жана тартип берүүгө умтулам. Жаратмандык менен иш алып барып, чыгармачыл иш-чараларды уюштурууга өзгөчө көңүл бурам.</p>
+      <p>💡 <strong>Мыкты сапаттарым:</strong></p>
+      <ul>
+        <li>Жоопкерчиликтүү жана ишенимдүүмүн</li>
+        <li>Балдар менен иштөөдө сабырдуу жана боорукермин</li>
+        <li>Ишке чыгармачылык менен мамиле кылам</li>
+        <li>Команда менен иштөөнү жакшы көрөм</li>
+      </ul>
+      <p>📚 Кесиптик өсүүм үчүн курстарга катышып, жаңы билимдерди үзгүлтүксүз алып турам.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-top: 30px;">
+  <img src="photo_2025-06-03_13-02-43.jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_11-06-26.jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_11-05-08.jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_11-05-06.jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_12-33-38.jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_12-34-32 (2).jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_12-38-56.jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_12-34-05.jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_12-34-32.jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_12-31-37.jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_12-27-34.jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_12-31-37.jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_12-33-06.jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_12-38-55.jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_12-38-55 (2).jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_12-38-58.jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_12-38-58 (2).jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_12-39-00.jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_12-39-02.jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_12-39-06.jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_12-39-06 (2).jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_12-39-08.jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_12-39-24.jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_12-39-24 (2).jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_12-39-24 (3).jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_12-39-25.jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_12-39-27.jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_12-39-32.jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_12-39-48.jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_12-39-29.jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_12-39-28.jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <img src="photo_2025-06-03_12-39-34.jpg" alt="" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+  <!-- Добавляйте ещё фото -->
+</div>
+
+    </section>
+
+    <section id="contact">
+      <h2>Байланыш</h2>
+      <p>📞 Телефон: <a href="tel:+996555123456">+996 555 123 456</a></p>
+      <p>✉️ Email: <a href="mailto:guliza.osmonova@example.com">guliza.osmonova@example.com</a></p>
+      <p>📍 Дарек: Кыргызстан, Ош облусу, Ноокат району, Үч-Бай айылы</p>
+      <p>🌐 <a href="https://www.instagram.com/osmonova7959?igsh=bm5hbTQ2dzhheHNj" target="_blank" rel="noopener">Instagram профиль</a></p>
+    </section>
+  </main>
+
+  <footer>
+    © 2024 Осмонова Гулиза Осмоновна. Бардык укуктар корголгон.
+  </footer>
+</body>
+</html>
